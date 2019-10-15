@@ -59,7 +59,21 @@ router.get('/favorites', function(req, res){
   //TODO retreive all cities 
   db.city.findAll()
   .then(function(cities){
-    res.render('cities/favorites', {cities})
+    let markers = cities.map(city => {
+        let markerObj = {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [city.long, city.lat]
+          },
+          "properties": {
+            "title": city.name,
+            "icon": "airport"
+          }
+        }
+        return JSON.stringify(markerObj)
+    })
+    res.render('cities/favorites', {cities, mapkey: process.env.MAPBOX_KEY, markers})
   })
 })
 
