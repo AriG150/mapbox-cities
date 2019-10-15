@@ -19,4 +19,4 @@ app.get('/', function (req, res) {
 // Controllers
 app.use('/', require('./routes/cities'))
 
-app.listen(process.env.PORT || 3000, () => console.log(`🎧 You're listening to the smooth sounds of KLOP port ${process.env.PORT || 3000} 🎧`))
+app.listen(process.env.PORT || 3001, () => console.log(`🎧 You're listening to the smooth sounds of KLOP port ${process.env.PORT || 3001} 🎧`))
